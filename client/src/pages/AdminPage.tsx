@@ -147,17 +147,24 @@ export default function AdminPage() {
 
   if (!user) {
     return (
-      <main className="container min-h-[70vh] pt-36 pb-24">
-        <p className="eyebrow">Admin access</p>
-        <h1 className="mt-4 max-w-4xl font-display text-6xl leading-none md:text-8xl">Sign in to manage<span className="text-[#f7a51a]">.</span></h1>
-        <p className="mt-10 max-w-xl text-lg leading-8 text-[#c5bfb3]">Use the Supabase Auth account assigned the Retro Drip administrator role.</p>
-        <form onSubmit={handleLogin} className="mt-10 grid max-w-md gap-5">
-          <label><span className="eyebrow mb-2 block">Admin email</span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" /></label>
-          <label><span className="eyebrow mb-2 block">Password</span><input type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" /></label>
-          {authError && <p className="text-sm text-[#ff9c72]">{authError.message}</p>}
-          <button className="btn btn-primary w-fit" disabled={loginPending}>{loginPending ? <><Loader2 className="animate-spin" size={15}/> Signing in…</> : <>Sign in <ArrowRight size={15}/></>}</button>
-        </form>
-        <p className="mt-8 text-xs leading-6 text-[#77736c]">The account email is prefilled as admin@retro.com. Enter the password you created in Supabase Authentication.</p>
+      <main className="relative flex min-h-[calc(100vh-88px)] items-center justify-center overflow-hidden px-4 pb-16 pt-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(247,165,26,.13),transparent_36%),linear-gradient(135deg,#090908,#17130d)]" />
+        <div className="noise relative w-full max-w-[520px] border border-[#f7a51a]/25 bg-[#11100e]/95 p-7 shadow-[0_30px_100px_rgba(0,0,0,.5)] backdrop-blur-xl sm:p-12">
+          <div className="mb-9 text-center">
+            <img src="/retro-drip-logo.png" alt="Retro Drip" className="mx-auto mb-7 h-20 w-32 object-cover object-center" />
+            <p className="font-mono text-[10px] uppercase tracking-[.3em] text-[#f7a51a]">Private workspace</p>
+            <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-.05em] text-[#f5efe4] sm:text-5xl">Admin Login</h1>
+            <p className="mt-3 text-sm text-[#9a958b]">Manage products &amp; order requests</p>
+          </div>
+          <form onSubmit={handleLogin} className="grid gap-5">
+            <label><span className="eyebrow mb-2 block">Admin email</span><input className="bg-[#090908] py-4" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" /></label>
+            <label><span className="eyebrow mb-2 block">Password</span><input className="bg-[#090908] py-4" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" /></label>
+            {authError && <p className="border border-[#ff9c72]/30 bg-[#2a1711] p-3 text-sm text-[#ffb69a]">{authError.message}</p>}
+            <button className="btn btn-primary mt-2 min-h-14 w-full text-sm" disabled={loginPending}>{loginPending ? <><Loader2 className="animate-spin" size={15}/> Signing in…</> : <>Sign in <ArrowRight size={15}/></>}</button>
+          </form>
+          <Link href="/" className="mt-8 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-[.14em] text-[#9a958b] transition hover:text-[#f7a51a]">← Back to storefront</Link>
+          <p className="mt-8 text-center text-[10px] leading-5 text-[#77736c]">Use the password created for admin@retro.com in Supabase Authentication.</p>
+        </div>
       </main>
     );
   }
