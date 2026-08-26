@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1787754995858,
+      "tag": "0000_green_leader",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1787755323273,
+      "tag": "0001_foamy_starfox",
+      "breakpoints": true
+    }
+  ]
+}
